@@ -1,0 +1,250 @@
+{
+    "version": "0.1",
+    "pageContent": 
+	{
+        "_comments": "object that contains data for page labels, buttons, etc.",
+        "navItems": 
+		{
+            "_common": 
+			{
+                "buttonBackToGallery": 
+				{
+                    "name": "Back To Gallery",
+					"method": "backToGallery()",
+					"idName": "backToGallery"	
+                },
+                "buttonStartTutorial": 
+				{
+                    "name": "Start Tutorial",
+					"method": "startTutorialFromDetailsScreen()",
+					"idName": "startTutorial"
+                },
+				"buttonViewDetails": 
+				{
+                    "name": "View Details",
+					"method": "viewDetails()",
+					"idName": "stepsViewDetails"	
+                }
+            }
+        }
+    },
+    "tutorial": 
+	{
+        "_common": 
+		{
+            "name": "Unit Testing - Testing multiple message flow nodes using propagate and evaluate",			
+            "shortDescription": "Learn how unit tests can be used for testing a sequence of multiple message flow nodes.",
+            "durationText": "This tutorial takes approximately",
+            "durationTime": "10 minutes",
+            "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+            "resourceToOpen": "ExampleRouterFlow",
+            "helpLink": 
+			{
+                "text": "IBM Knowledge Center",
+           		"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.ace.home.doc/help_home.htm"
+            }
+        },
+        "pageDetails": 
+		{
+            "topicsName": "Tutorial topics",
+            "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+            "topicList": 
+			[
+                {
+                    "title": "Java Unit Testing"
+                }		
+            ],
+            "outcomesName": "Learning outcomes",
+            "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+            "outcomeList": 
+			[
+                {
+                    "title": "Use the evaluate() and propagate() testing methods on a NodeSpy to control whether a single message flow node is tested in isolation, or whether control is propagated to subsequent message flow nodes as well."
+                }
+            ],
+            "summary": 
+			{
+                "overviewName": "Overview",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "sections": 
+				[
+					 {
+                        "section": "This provides a simple message flow and some corresponding unit tests. The simple flow is only intended as an educational aid to demonstrate how unit test authors can choose whether to test a single message flow node in isolation, or to propagate a message to subsequent message flow nodes which can also be tested within the scope of the same test case."
+					 },
+					 {
+                        "section": "The tutorial provides the message flow already constructed, recorded message assembly files and some associated unit tests in a Test Project.  We will import these projects into your Toolkit workspace, explore the flow design and tests, and then execute the tests - all from within the Toolkit."					
+					 }
+                ]
+            },
+			"helpLinks": 
+			{
+				"_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+				"title": "Find out more",
+				"details": 
+				[
+					{
+						"title": "Knowledge Center link to ",
+						"description": "Developing unit tests using Test Projects",
+						"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "web"
+					},
+					{					
+						"title": "Knowledge Center link to ",
+						"description": "Developing unit tests using the command: ibmint generate tests",
+						"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "web"
+					}
+				]
+			}
+        },
+        "pageSteps": 
+		{
+            "create": 
+			{
+                "overview": 
+				{
+                    "name": "Create",
+                    "heading": "Import a project",
+                    "_createComment": "A description of what will happen when the user clicks Import.",
+                    "sections": 
+					[
+                        {
+                            "section": "Click <span class='uicontrol'>Import</span> and the application named <span class='application'>MySimpleApplication</span>, and the test project named <span class='application'>MySimpleApplication_IntegrationTests</span> will be added to your workspace."
+						},
+						{
+							"section": "<span class='application'>MySimpleApplication</span> provides a single message flow named <span class='resource'>MyMessageFlowWithTwoComputeNodes</span> which receives data over HTTP. The flow uses two Compute nodes in a row, followed by an HTTPReply node at the end of the flow which responds back to the requestor. Typically message flows would not wire two Compute nodes in a row, but we are using this particular flow design in this situation as a learning aid to help make it very clear how flow developers can choose the portion of their message flows which they would like to test. Each of the Compute nodes copies the input message to the output, whilst adding a new output field."													
+						},
+						{
+							"section":"Now move to the Prepare section where we will explore the tests which have been imported."
+						}
+					 ]
+				 },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Developing integration solutions by using applications",
+                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+							"type": "web"
+                        }
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "heading": "",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": 
+		     [				 
+				  {
+                "section":"<b>Explore TestCase_001 which demonstrates the NodeSpy evaluate() method, with the singleNodeTest parameter set to true</b>",
+                "steps":{
+                  "type":"ordered",
+                  "details":[
+                    {						
+                      "details": "Inside the imported project named <span class='application'>MySimpleApplication_IntegrationTest</span>, look inside the package named <b>test</b> and open <b>MySimpleApplication_MyMessageFlowWithTwoComputeNodes_IntegrationTest.java</b>. This file contains three test cases which demonstrate different aspects of testing a sequence of multiple message flow nodes. Take a look at <b>MySimpleApplication_MyMessageFlowWithTwoComputeNodes_TestCase_001</b>. This test case declares two NodeSpy objects to represent the message flow nodes named <b>Compute1</b> and <b>Compute2</b>. An input message assembly file named <b>MyMessageFlowWithTwoComputeNodes_Compute1_input.mxml</b> is sent in to <b>Compute1</b> to start the test."
+					},
+					{
+						"details": "The main part of the test demonstrates the behavior of the evaluate() method. When this is called on a NodeSpy with the singleNodeTest parameter set to <b>true</b>, it allows a single message flow node to be tested without propagating the message to any subsequent message flow nodes. In order to test a sequence of nodes, setting the singleNodeTest parameter to false allows message propagation from any of the output terminals on the NodeSpy. This first test case tests a single message flow node. After the evaluate method is called, further assertions check that Compute1 is called 1 time, and checks that Compute2 is called 0 times, as shown in the following passage of code:<br><code>// Call the message flow node Compute1 with the Message Assembly<br>// NOTE singleNodeTest is true so message propagation to Compute2 will not occur!<br>nodeSpyCompute1.evaluate(inputMessageAssembly, true, \"in\"); <br>// Assert that Compute1 is called 1 time<br>assertThat(nodeSpyCompute1, nodeCallCountIs(1));<br>// Assert that Compute1 output terminal propagate count is 1<br>assertThat(nodeSpyCompute1, terminalPropagateCountIs(\"out\", 1));<br>// Assert that Compute2 is called 0 times<br>assertThat(nodeSpyCompute2, nodeCallCountIs(0));<br>// Assert that Compute2 output terminal propagate count is 1<br>assertThat(nodeSpyCompute2, terminalPropagateCountIs(\"out\", 0));</code><br>"
+					}			
+				  ]
+				}
+				  },
+				  {
+                "section":"<b>Explore TestCase_002 which demonstrates the NodeSpy evaluate() method, with the singleNodeTest parameter set to false</b>",
+                "steps":{
+                  "type":"ordered",
+                  "details":[
+                    {						
+                      "details": "Look further down <b>MySimpleApplication_MyMessageFlowWithTwoComputeNodes_IntegrationTest.java</b> at <b>MySimpleApplication_MyMessageFlowWithTwoComputeNodes_TestCase_002</b>. This test case also declares two NodeSpy objects which represent the message flow nodes named <b>Compute1</b> and <b>Compute2</b>. The same input message assembly file named <b>MyMessageFlowWithTwoComputeNodes_Compute1_input.mxml</b> is sent in to <b>Compute1</b> to start the test."
+					},
+					{
+						"details": "The main part of the test demonstrates the behavior of the evaluate() method. When this is called on a NodeSpy with the singleNodeTest parameter set to <b>false</b>, it allows multiple message flow nodes to be tested through propagation of the message beyond a single NodeSpy to subsequent nodes downstream in the flow. In order to test a sequence of nodes, setting the singleNodeTest parameter to false allows message propagation from any of the output terminals on the NodeSpy. When the singleNodeTest parameter is false, execution of the flow will continue until the injected message reaches the end of the flow, or until an uncaught message flow exception occurs. This second test case tests both Compute1 and Compute2. After the evaluate method is called, further assertions check that Compute1 is called 1 time, and checks that Compute2 is called 1 time as well, as shown in the following passage of code:<br><code>// Call the message flow node Compute1 with the Message Assembly<br>// NOTE singleNodeTest is false so message propagation to Compute2 will occur!<br>nodeSpyCompute1.evaluate(inputMessageAssembly, false, \"in\");<br>// Assert that Compute1 is called 1 time<br>assertThat(nodeSpyCompute1, nodeCallCountIs(1));<br>// Assert that Compute1 output terminal propagate count is 1<br>assertThat(nodeSpyCompute1, terminalPropagateCountIs(\"out\", 1));<br>// Assert that Compute2 is called 1 time<br>assertThat(nodeSpyCompute2, nodeCallCountIs(1));<br>// Assert that Compute2 output terminal propagate count is 1<br>assertThat(nodeSpyCompute2, terminalPropagateCountIs(\"out\", 1));</code><br>"
+					}			
+				  ]
+				}
+				  },				  
+				  {
+                "section":"<b>Explore TestCase_003 which demonstrates the NodeSpy propagate() method</b>",
+                "steps":{
+                  "type":"ordered",
+                  "details":[
+                    {						
+                      "details": "The propagate() method on a NodeSpy, is similar to the evaluate() method with the singleNodeTest parameter set to false, in that this technique allows for message propagation beyond a single NodeSpy so that multiple message flow nodes can be tested in a single test case. The propagate() method sends a Message Assembly to the output terminal of a NodeSpy. This third test case defines two NodeSpy objects - one for the HTTP Input node at the start of the flow and one for the HTTP Reply node at the end of the flow. Conceptually, the intervening Compute nodes, Compute1 and Compute2 are treated as a black box in this test. This test also demonstrates the method named setStopAtInputTerminal() which is called on the HTTP Reply NodeSpy. This prevents message propagation past a given message flow node terminal:<br><code>// Set up a stop at the in terminal of the NodeSpy for the HTTPReply<br>nodeSpyHTTPReply.setStopAtInputTerminal(\"in\");</code>"
+					},
+					{
+						"details": "Take a careful look at this section of the third test case which demonstrates the effect of the setStopAtInputTerminal() by defining an assertion that the HTTP Repy NodeSpy is called zero times:<br><code>// Call the message flow node HTTP Input with the Message Assembly<br>// Use the propagate method to send the Message Assembly to the out terminal of the HTTPInput node<br>// Treat Compute1 and Compute2 as a \"black box\" for this test, then check the outcome at the in terminal of HTTPReply<br>nodeSpyHTTPInput.propagate(inputMessageAssembly, \"out\");<br>// Demonstrate that the HTTPReply has not been called due to the earlier setStopAtInputTerminal(\"in\")<br>assertThat(nodeSpyHTTPReply, nodeCallCountIs(0));</code>"						
+					},
+					{
+						"details": "Having explored and understood the purpose of the provided tests, now move to the Run section of the tutorial where we will use an integration server to execute them."						
+                    }
+				  ]
+				}
+				  }				  
+             ]
+                },
+                "helpLinks": 
+				{
+                }
+            },
+            "run": 
+			{
+                "overview": 
+				{
+                    "name": "Run",
+                    "heading": "",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                "sections":[                            
+                            {
+                                "section": "<h4>Execute the Unit Tests",
+                                "steps": {
+                                    "type": "ordered",
+                                    "details": [                                      
+                                    	{
+                                        "details": "Right click the Test Project named MySimpleApplication_IntegrationTest and choose the option <b>Run Test Project</b>. After a few seconds, the Console view should be opened, which will show an independent integration server being started in order to execute the unit test. There is no further deployment step required - This is taken care of for you so that the application under test, and the Test Project are automatically available to the server."
+										},
+										{
+											"details": "The JUnit view will open in the top left corner (just to the right of the Application Development view and the Patterns Explorer) and will show that the three test cases which were discussed in depth in the Prepare section of the tutorial have all run successfully and passed."
+                                        }
+                                      ]
+                                  }                            
+                        },			
+						{
+			    			"section": "This tutorial has shown how to how unit tests can be used for testing a sequence of multiple message flow nodes."
+						}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[                        
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Unit Testing your message flow",
+                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/rt26110_.htm",
+							"type": "web"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
