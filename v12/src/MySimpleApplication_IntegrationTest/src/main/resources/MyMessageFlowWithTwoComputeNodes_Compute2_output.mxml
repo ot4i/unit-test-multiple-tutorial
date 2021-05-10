@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><MessageAssembly>
+   <version iib:valueType="INTEGER" xmlns:iib="http://com.ibm.iib/lt/1.0">1</version>
+   <checkpoint>
+      <messageId iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">00003610-60994962-00000001</messageId>
+      <propagationCount iib:valueType="INTEGER" xmlns:iib="http://com.ibm.iib/lt/1.0">1</propagationCount>
+      <nodeCallDepth iib:valueType="INTEGER" xmlns:iib="http://com.ibm.iib/lt/1.0">2</nodeCallDepth>
+      <timestamp iib:valueType="TIMESTAMP" xmlns:iib="http://com.ibm.iib/lt/1.0">2021-05-10 14:55:30.405001</timestamp>
+      <source>
+         <name iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">Compute1</name>
+         <identifier iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">MyMessageFlowWithTwoComputeNodes#FCMComposite_1_4</identifier>
+         <type iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">ComIbmComputeNode</type>
+         <terminal iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">out</terminal>
+         <nodePath>
+            <application iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">MySimpleApplication</application>
+            <messageFlow iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">MyMessageFlowWithTwoComputeNodes</messageFlow>
+            <node iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">Compute1</node>
+         </nodePath>
+         <inputNode iib:valueType="BOOLEAN" xmlns:iib="http://com.ibm.iib/lt/1.0">FALSE</inputNode>
+      </source>
+      <target>
+         <name iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">Compute2</name>
+         <identifier iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">MyMessageFlowWithTwoComputeNodes#FCMComposite_1_5</identifier>
+         <type iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">ComIbmComputeNode</type>
+         <terminal iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">in</terminal>
+         <nodePath>
+            <application iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">MySimpleApplication</application>
+            <messageFlow iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">MyMessageFlowWithTwoComputeNodes</messageFlow>
+            <node iib:valueType="CHARACTER" xmlns:iib="http://com.ibm.iib/lt/1.0">Compute2</node>
+         </nodePath>
+      </target>
+   </checkpoint>
+   <environment/>
+   <localEnvironment iib:parser="MQROOT" xmlns:iib="http://com.ibm.iib/lt/1.0">
+      <Destination>
+         <HTTP>
+            <RequestIdentifier iib:valueType="BLOB">45564854000000000000000065a8c656d4d4000000000000</RequestIdentifier>
+         </HTTP>
+      </Destination>
+   </localEnvironment>
+   <exceptionList/>
+   <message iib:parser="WSRoot" xmlns:iib="http://com.ibm.iib/lt/1.0">
+      <Properties iib:parser="MQPROPERTYPARSER">
+         <MessageSet iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <MessageType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <MessageFormat iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <Encoding iib:valueType="INTEGER">546</Encoding>
+         <CodedCharSetId iib:valueType="INTEGER">1208</CodedCharSetId>
+         <Transactional iib:valueType="BOOLEAN">FALSE</Transactional>
+         <Persistence iib:valueType="BOOLEAN">FALSE</Persistence>
+         <CreationTime iib:valueType="GMTTIMESTAMP">2021-05-10 14:55:30.405001</CreationTime>
+         <ExpirationTime iib:valueType="INTEGER">-1</ExpirationTime>
+         <Priority iib:valueType="INTEGER">0</Priority>
+         <ReplyIdentifier iib:valueType="BLOB">000000000000000000000000000000000000000000000000</ReplyIdentifier>
+         <ReplyProtocol iib:valueType="CHARACTER">SOAP-HTTP</ReplyProtocol>
+         <Topic iib:elementType="0x03000000"/>
+         <ContentType iib:valueType="CHARACTER">text/plain; charset=utf-8</ContentType>
+         <IdentitySourceType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourceToken iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourcePassword iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourceIssuedBy iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedToken iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedPassword iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedIssuedBy iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+      </Properties>
+      <XMLNSC iib:parser="xmlnsc">
+         <Message>
+            <Field iib:valueType="CHARACTER">Hello World</Field>
+            <AddedField1 iib:valueType="CHARACTER">Added by Compute1</AddedField1>
+            <AddedField2 iib:valueType="CHARACTER">Added by Compute2</AddedField2>
+         </Message>
+      </XMLNSC>
+   </message>
+</MessageAssembly>

@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE MyMessageFlowWithTwoComputeNodes_Compute2
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		CREATE LASTCHILD OF OutputRoot.XMLNSC.Message NAME 'AddedField2' VALUE 'Added by Compute2';		
+		RETURN TRUE;
+	END;
+END MODULE;
