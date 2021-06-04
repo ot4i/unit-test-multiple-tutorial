@@ -40,8 +40,8 @@
             "resourceToOpen": "ExampleRouterFlow",
             "helpLink": 
 			{
-                "text": "IBM Knowledge Center",
-           		"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.ace.home.doc/help_home.htm"
+                "text": "IBM Documentation",
+           		"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/acesw_home.html"
             }
         },
         "pageDetails": 
@@ -83,15 +83,15 @@
 				"details": 
 				[
 					{
-						"title": "Knowledge Center link to ",
+						"title": "IBM Documentation link to ",
 						"description": "Developing unit tests using Test Projects",
-						"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
 						"type": "web"
 					},
 					{					
-						"title": "Knowledge Center link to ",
+						"title": "IBM Documentation link to ",
 						"description": "Developing unit tests using the command: ibmint generate tests",
-						"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
 						"type": "web"
 					}
 				]
@@ -125,9 +125,9 @@
                     "details": 
 					[
                         {
-                            "title": "Knowledge Center link to ",
+                            "title": "IBM Documentation link to ",
                             "description": "Developing integration solutions by using applications",
-                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+                            "link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
 							"type": "web"
                         }
                     ]
@@ -237,9 +237,9 @@
                     "details": 
 					[                        
                         {
-                            "title": "Knowledge Center link to ",
+                            "title": "IBM Documentation link to ",
                             "description": "Unit Testing your message flow",
-                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/rt26110_.htm",
+                            "link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/rt26110_.htm",
 							"type": "web"
                         }
                     ]
